@@ -3,6 +3,17 @@ const searchInput = document.getElementById('searchInput');
 const results = document.getElementById('results');
 const hoverModal = document.getElementById('hover-modal');
 
+// Redirección
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('more-info-btn')) {
+    const id = e.target.dataset.id;
+    const type = e.target.dataset.type;
+
+    // Redirigir a detalles.html pasando id y tipo
+    window.location.href = `details.html?id=${id}&type=${type}`;
+  }
+});
+
 // Renderizar las peliculas buscadas
 function renderResults(items) {
   const moviesContainer = document.getElementById('movies-container');
@@ -23,19 +34,39 @@ function renderResults(items) {
     `;
 
     // Eventos para el modal flotante
-    div.addEventListener('mouseenter', () => {
+    div.addEventListener('mouseenter', (e) => {
+      const rect = div.getBoundingClientRect();
+      const modalWidth = 300; // o el ancho máximo de tu modal
+      const modalHeight = 200; // puedes ajustar esto si es necesario
+
+      let top = rect.top + window.scrollY;
+      let left = rect.left + rect.width + 10; // a la derecha del card
+
+      // Ajustar si se sale del lado derecho
+      if (left + modalWidth > window.innerWidth) {
+        left = rect.left - modalWidth - 10; // mostrarlo a la izquierda del card
+      }
+
+      // Ajustar si se sale por abajo
+      if (top + modalHeight > window.scrollY + window.innerHeight) {
+        top = window.scrollY + window.innerHeight - modalHeight - 10;
+      }
+
       const content = `
         <img src="https://image.tmdb.org/t/p/w500${item.backdrop_path}" alt="Backdrop">
         <h4>${item.title || item.name}</h4>
         <p><strong>${item.media_type === 'movie' ? 'Película' : 'Serie'}</strong> | ⭐ ${item.vote_average}</p>
-        <p>${item.overview || 'Sin sinopsis disponible.'}</p>
+        <p id="sinopsis">${item.overview || 'Sin sinopsis disponible.'}</p>
       `;
+
       hoverModal.innerHTML = content;
-      hoverModal.classList.remove('hidden');
+      hoverModal.style.top = `${top}px`;
+      hoverModal.style.left = `${left}px`;
+      hoverModal.style.display = 'block';
     });
 
     div.addEventListener('mouseleave', () => {
-      hoverModal.classList.add('hidden');
+      hoverModal.style.display = 'none';
     });
 
     // Añadir al contenedor correcto
