@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Dynalight&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playwrite+PL:wght@100..400&display=swap');
+
+:root {
+    --dynalight: 'Dynalight', serif;
+    --playwrite: 'Playwrite PL', serif;
+    --baskerville: 'Libre Baskerville', serif;
+    --padding-general: 15px 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Cabecera */
+.titulo {
+    width: 100%;
+    padding: var(--padding-general);
+}
+.titulo h1 {
+    text-align: center;
+    font-size: 14px;
+    font-family: var(--playwrite);
+    font-weight: lighter;
+}
+
+/* Buscador */
+.buscador {
+    width: 100%;
+    background-color: rgba(173, 216, 230, 0.219);
+    backdrop-filter:  blur(12px) brightness(110%);
+    padding: var(--padding-general);
+}
+.buscador input {
+    background-color: #d6d6d6;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px;
+}
+
+/* Resultados */
+#results {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+/* Contenedor de categoria */
+.category {
+  flex: 1;
+}
+
+.category h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+.results-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 1rem;
+}
+
+/* Tarjetas */
+.movie-card {
+  width: 100%;
+  text-align: center;
+}
+.movie-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+.nombre-pelicula {
+    font-family: var(--baskerville);
+    font-size: 10px;
+    text-align: start;
+}
+.tipo {
+    font-family: var(--baskerville);
+    font-size: 12px; 
+}
+
+#hover-modal {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 10px;
+  pointer-events: none; /* evita conflictos con mouse */
+  transition: opacity 0.2s ease;
+}
+#hover-modal img {
+  width: 100%;
+  border-radius: 5px;
+}
+#hover-modal h4 {
+  margin: 8px 0 4px;
+  font-size: 16px;
+}
+#hover-modal p {
+  font-size: 14px;
+  color: #444;
+  max-height: 100px;
+  overflow-y: auto;
+}
+.hidden {
+  display: none;
+}
+
+/* Responsivo: tablet o más grande, se ven lado a lado */
+@media (min-width: 768px) {
+  #results {
+    flex-direction: row;
+  }
+}
+
+
+
+
+
