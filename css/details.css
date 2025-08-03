@@ -138,6 +138,42 @@
     border-radius: 12px;
 }
 
+/* galerias similares */
+.related-movies {
+  margin-top: 40px;
+  padding: 0 20px;
+}
+.titulo-similares {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.galeria-similares {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+}
+.card-similar {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+.card-similar img {
+  width: 100%;
+  border-radius: 10px;
+  height: 210px;
+  object-fit: cover;
+}
+.card-similar p {
+  margin-top: 8px;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+.card-similar:hover {
+  transform: scale(1.05);
+}
+
+
 /* Estilos para tablets (>= 768px) */
 @media screen and (min-width: 768px) {
     .details-container {

@@ -61,7 +61,33 @@ async function fetchTrailer() {
   }
 }
 
+async function fetchSimilarContent() {
+  try {
+    const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${apiKey}&language=es-ES`);
+    const data = await res.json();
+
+    const similares = data.results.slice(0, 12); // Muestra solo los primeros 12 similares
+
+    const contenedor = document.querySelector(".related-movies");
+    contenedor.innerHTML = `
+      <h3 class="titulo-similares">Similares</h3>
+      <div class="galeria-similares">
+        ${similares.map(item => `
+          <div class="card-similar" onclick="redirigirADetalles('${item.id}', '${type}')">
+            <img src="https://image.tmdb.org/t/p/w300${item.poster_path}" alt="${item.title || item.name}">
+            <p>${item.title || item.name}</p>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  } catch (error) {
+    console.error("Error al cargar contenido similar:", error);
+  }
+}
+
+
 window.addEventListener("DOMContentLoaded", () => {
   fetchDetails();
   fetchTrailer();
+  fetchSimilarContent();
 });

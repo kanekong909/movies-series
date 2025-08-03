@@ -13,31 +13,37 @@
         <h1>Swiflass</h1>
     </div>
 
+    <!-- Volver atrás -->
     <div class="back-btn">
       <button class="btn-volver" onclick="window.location.href='../index.html'">← Volver</button>
     </div>
 
-   <div class="details-container">
-      <!-- Contenedor titulo e imagen -->
-      <div class="title-img">
-        <div class="back-title">
-          <h2 id="titulo"></h2>
+    <!-- Contenedor de detalles -->
+    <div class="details-container">
+        <!-- Contenedor titulo e imagen -->
+        <div class="title-img">
+          <div class="back-title">
+            <h2 id="titulo"></h2>
+          </div>
+          <img id="poster" src="" alt="Poster">
         </div>
-        <img id="poster" src="" alt="Poster">
-      </div>
-      
-      <!-- Demas informacion -->
-      <div class="info-wrapper">
-        <span id="sinopsis" class="sinopsis"></span>
-          <p class="title-category">Categoría</p>
-        <div id="categorias"></div>
-        <div id="actores"></div>
-      </div>
+        
+        <!-- Demas informacion -->
+        <div class="info-wrapper">
+          <span id="sinopsis" class="sinopsis"></span>
+            <p class="title-category">Categoría</p>
+          <div id="categorias"></div>
+          <div id="actores"></div>
+        </div>
 
-      <div class="trailer" id="trailer">
-        <!-- Aquí se inyectará el tráiler -->
-      </div>
+        <div class="trailer" id="trailer">
+          <!-- Aquí se inyectará el tráiler -->
+        </div>
     </div>
+
+    <section class="related-movies">
+      <!-- Aquí se cargarán las películas o series similares -->
+    </section>
 
     <script src="/js/details.js"></script>
 </body>
