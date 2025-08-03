@@ -1,0 +1,167 @@
+.details-container {
+    /* background-color: lightblue; */
+    width: 100%;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+#poster {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    /* border-radius: 16px; */
+    box-shadow: 0 0 20px rgba(19, 18, 18, 0.7);
+    transition: transform 0.3s ease;
+}
+#poster:hover {
+    transform: scale(1.02);
+}
+#sinopsis {
+    background-color: #8282821f;
+    padding: 9px 9px;
+    border-radius: 6px;
+    display: -webkit-box;
+    line-clamp: 5; /* Número de líneas que quieres mostrar */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+}
+#categorias {
+    /* background-color: lightblue; */
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#categorias span {
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    transition: background-color 0.3s ease;
+}
+#categorias span:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+.title-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+}
+.title-img .back-title   {
+    width: 100%;
+    /* background-color: lightblue; */
+    padding: 5px 0;
+    border-bottom: 1px solid #9c98984f;
+}
+.title-img .back-title h2 {
+    text-transform: uppercase;
+}
+.info-wrapper {
+    /* background-color: lightblue; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Boton volver */
+.back-btn {
+    width: 100%;
+    padding: 0 20px;
+}
+.btn-volver {
+    padding: 0 15px;
+    background-color: transparent;
+    border: 1px solid #030000;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    height: 30px;
+    transition: background-color 0.3s, border-color 0.3s;
+    align-self: flex-start;
+}
+.btn-volver:hover {
+    background-color: #222;
+    border-color: #888;
+}
+
+/* Actores */
+#actores {
+  margin-top: 20px;
+  color: #d1cfcf;
+}
+#actores .chip {
+  display: inline-block;
+  background-color: #1f1f1f;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 4px 4px 0 0;
+  font-size: 14px;
+}
+
+/* Texto categoria */
+.info-wrapper .title-category,
+.trailer {
+    font-size: 20px;
+    margin: 10px 0;
+    padding: 7px 9px;
+    border-bottom: 1px solid #cccccc95;
+    font-family: var(--poppins);
+    font-weight: bold;
+}
+
+/* Reparto */
+.reparto {
+    color: #e6e4e4;
+    font-family: var(--poppins);
+    border-bottom: 1px solid #cccccc95;
+    padding: 7px 9px;
+    margin-bottom: 8px;
+}
+
+/* Estilos para tablets (>= 768px) */
+@media screen and (min-width: 768px) {
+    .details-container {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+    #poster {
+        max-height: 440px;
+    }
+
+    #trailer {
+        grid-column: 1 / -1; 
+    }
+}
+
+/* Estilos para PCs (>= 1024px) */
+@media screen and (min-width: 1024px) {
+    .details-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+    }
+    
+     #poster {
+        width: 300px;
+        max-height: 440px;
+    }
+
+    .info-wrapper {
+        /* background-color: lightblue; */
+        padding: 50px 0;
+    }
+
+    #trailer {
+        justify-content: center;
+    }
+}
