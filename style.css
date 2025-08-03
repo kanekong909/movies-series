@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Dynalight&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playwrite+PL:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Dynalight&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playwrite+PL:wght@100..400&display=swap');
 
 :root {
     --dynalight: 'Dynalight', serif;
     --playwrite: 'Playwrite PL', serif;
     --baskerville: 'Libre Baskerville', serif;
+    ---comic: 'Comic Neue', serif;
     --padding-general: 15px 20px;
 }
 
@@ -19,6 +20,12 @@ body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: #fff;
     font-family: 'Segoe UI', sans-serif;
+}
+
+.trending {
+  font-family: var(---comic);
+  font-weight: lighter;
+  padding: 15px 15px;
 }
 
 /* Cabecera */
@@ -41,10 +48,16 @@ body {
     padding: var(--padding-general);
 }
 .buscador input {
-    background-color: #d6d6d6;
-    border-radius: 20px;
+    background-color: #b2b2b2;
+    border-radius: 5px;
     border: none;
     padding: 5px 10px;
+    width: 250px;
+    height: 35px;
+    outline: none;
+}
+.buscador input::placeholder {
+  color: #252627;
 }
 
 /* Resultados */
