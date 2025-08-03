@@ -2,6 +2,17 @@ const apiKey = "c430c77d8b25dc96309ce5d466d3c372";
 const searchInput = document.getElementById('searchInput');
 const results = document.getElementById('results');
 const hoverModal = document.getElementById('hover-modal');
+let hideTimeout;
+
+ // Si entra al modal, cancela el timeout
+hoverModal.addEventListener('mouseenter', () => {
+  clearTimeout(hideTimeout);
+});
+
+// Si sale del modal, ahora sí se oculta
+hoverModal.addEventListener('mouseleave', () => {
+  hoverModal.style.display = 'none';
+});
 
 // Redirección
 document.addEventListener('click', (e) => {
@@ -35,19 +46,19 @@ function renderResults(items) {
 
     // Eventos para el modal flotante
     div.addEventListener('mouseenter', (e) => {
+      clearTimeout(hideTimeout); // cancela el hide si estaba programado
+
       const rect = div.getBoundingClientRect();
-      const modalWidth = 300; // o el ancho máximo de tu modal
-      const modalHeight = 200; // puedes ajustar esto si es necesario
+      const modalWidth = 300;
+      const modalHeight = 200;
 
       let top = rect.top + window.scrollY;
-      let left = rect.left + rect.width + 10; // a la derecha del card
+      let left = rect.left + rect.width + 10;
 
-      // Ajustar si se sale del lado derecho
       if (left + modalWidth > window.innerWidth) {
-        left = rect.left - modalWidth - 10; // mostrarlo a la izquierda del card
+        left = rect.left - modalWidth - 10;
       }
 
-      // Ajustar si se sale por abajo
       if (top + modalHeight > window.scrollY + window.innerHeight) {
         top = window.scrollY + window.innerHeight - modalHeight - 10;
       }
@@ -57,6 +68,9 @@ function renderResults(items) {
         <h4>${item.title || item.name}</h4>
         <p><strong>${item.media_type === 'movie' ? 'Película' : 'Serie'}</strong> | ⭐ ${item.vote_average}</p>
         <p id="sinopsis">${item.overview || 'Sin sinopsis disponible.'}</p>
+        <button class="more-info-btn" data-id="${item.id}" data-type="${item.media_type}">
+          Más información
+        </button>
       `;
 
       hoverModal.innerHTML = content;
@@ -65,9 +79,13 @@ function renderResults(items) {
       hoverModal.style.display = 'block';
     });
 
+    // Al salir del div, se espera un poco antes de ocultar
     div.addEventListener('mouseleave', () => {
-      hoverModal.style.display = 'none';
+      hideTimeout = setTimeout(() => {
+        hoverModal.style.display = 'none';
+      }, 200); // da tiempo para mover el mouse al modal
     });
+
 
     // Añadir al contenedor correcto
     if (item.media_type === 'movie') {
