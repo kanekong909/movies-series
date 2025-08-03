@@ -27,6 +27,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: justify;
+    color: rgb(199, 199, 199);
 }
 #categorias {
     /* background-color: lightblue; */
@@ -127,6 +128,16 @@
     margin-bottom: 8px;
 }
 
+#trailer iframe,
+#trailer video {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 12px;
+}
+
 /* Estilos para tablets (>= 768px) */
 @media screen and (min-width: 768px) {
     .details-container {
@@ -136,6 +147,11 @@
     
     #poster {
         max-height: 440px;
+    }
+
+     .info-wrapper {
+        /* background-color: lightblue; */
+        padding: 50px 0;
     }
 
     #trailer {
@@ -150,18 +166,19 @@
         grid-template-columns: repeat(3, 1fr);
         justify-content: center;
     }
-    
-     #poster {
+
+    #poster {
         width: 300px;
         max-height: 440px;
     }
 
     .info-wrapper {
-        /* background-color: lightblue; */
         padding: 50px 0;
     }
 
     #trailer {
+        grid-column: 3 / 4; /* Solo ocupa la tercera columna */
+        align-self: start;  /* Opcional, para alinear arriba */
         justify-content: center;
     }
 }
