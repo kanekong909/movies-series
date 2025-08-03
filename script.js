@@ -38,25 +38,6 @@ function renderResults(items) {
       hoverModal.classList.add('hidden');
     });
 
-    div.addEventListener('mousemove', (e) => {
-      const modalWidth = hoverModal.offsetWidth;
-      const modalHeight = hoverModal.offsetHeight;
-      const padding = 15;
-
-      let left = e.pageX + 10;
-      let top = e.pageY + 10;
-
-      if (left + modalWidth + padding > window.innerWidth) {
-        left = e.pageX - modalWidth - 10;
-      }
-      if (top + modalHeight + padding > window.innerHeight) {
-        top = e.pageY - modalHeight - 10;
-      }
-
-      hoverModal.style.left = `${left}px`;
-      hoverModal.style.top = `${top}px`;
-    });
-
     // Añadir al contenedor correcto
     if (item.media_type === 'movie') {
       moviesContainer.appendChild(div);

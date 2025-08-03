@@ -64,13 +64,28 @@ body {
   font-size: 1.5rem;
 }
 .results-container {
+  /* background-color: lightblue; */
+  padding: 7px 7px;
+  border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
   gap: 1rem;
 }
+/* Películas */
+#movies-container {
+  background: linear-gradient(270deg, #e0f7fa32, #b2ebf238, #e0f7fa32);
+  background-size: 600% 600%;
+  animation: gradientAnimation 8s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+#series-container {
+  background: linear-gradient(270deg, #e4fae02f, #e5b2f239, #fae0e03f);
+  background-size: 600% 600%;
+  animation: gradientAnimation 8s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
 
 /* Tarjetas */
 .movie-card {
+  position: relative;
   width: 100%;
   text-align: center;
 }
@@ -79,13 +94,15 @@ body {
   border-radius: 10px;
 }
 .nombre-pelicula {
+    color: black;
     font-family: var(--baskerville);
-    font-size: 10px;
+    font-size: 11px;
     text-align: start;
+    padding: 0 5px;
 }
-.tipo {
+.title-categoria {
     font-family: var(--baskerville);
-    font-size: 12px; 
+    padding: 0 5px;
 }
 
 #hover-modal {
@@ -124,6 +141,19 @@ body {
   }
 }
 
+/* Animaciones */
+/* Keyframes para la animación del fondo */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 
 
