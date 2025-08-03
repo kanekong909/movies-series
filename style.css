@@ -185,6 +185,42 @@ body {
   font-family: var(---comic);
 }
 
+/* Recomendadas */
+.recomendados {
+  margin-top: 40px;
+  padding: 0 20px;
+}
+.titulo-recomendados {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.galeria-recomendados {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+}
+.card-recomendado {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+.card-recomendado img {
+  width: 100%;
+  border-radius: 10px;
+  height: 210px;
+  object-fit: cover;
+}
+.card-recomendado p {
+  margin-top: 8px;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+.card-recomendado:hover {
+  transform: scale(1.05);
+}
+
+
 /* Responsivo: tablet o más grande, se ven lado a lado */
 @media (min-width: 768px) {
   #results {
