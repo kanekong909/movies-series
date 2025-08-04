@@ -85,7 +85,6 @@ async function fetchSimilarContent() {
   }
 }
 
-
 window.addEventListener("DOMContentLoaded", () => {
   fetchDetails();
   fetchTrailer();
