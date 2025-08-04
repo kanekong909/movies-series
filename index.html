@@ -8,8 +8,14 @@
 </head>
 <body>
     <!-- Titulo pagina -->
-    <div class="titulo">
-        <h1>Swiflass</h1>
+    <div class="navbar">
+        <h1 class="logo">Swiflass</h1>
+        <nav class="nav-links">
+            <a href="templates/peliculas.html">Películas</a>
+            <a href="templates/series.html">Series</a>
+            <a href="templates/actores.html">Actores</a>
+            <a href="templates/directores.html">Directores</a>
+        </nav>
     </div>
 
     <!-- Buscador -->
@@ -17,7 +23,10 @@
         <input type="text" id="searchInput" placeholder="Buscar...">
     </div>
 
-    <h1 class="trending">Trending 🔥</h1>
+    <div class="back-trending">
+        <img src="./img/back.png" alt="Fondo">
+        <h1 class="trending">Trending 🔥</h1>
+    </div>
     
     <!-- Resultados -->
     <div id="results">
@@ -51,7 +60,6 @@
             <!-- Aquí se inyectarán los recomendados -->
         </div>
     </section>
-
 
     <script src="script.js"></script>
 </body>

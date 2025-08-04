@@ -5,11 +5,15 @@ function getParams() {
   const params = new URLSearchParams(window.location.search);
   return {
     id: params.get("id"),
-    type: params.get("type"),
+    type: params.get("type") || "movie", // si falta, usar "movie" por defecto
   };
 }
 
 const { id, type } = getParams();
+
+if (!id) {
+  console.error("Falta el parámetro 'id' en la URL.");
+}
 
 async function fetchDetails() {
   const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&language=es-ES`);
@@ -84,6 +88,19 @@ async function fetchSimilarContent() {
     console.error("Error al cargar contenido similar:", error);
   }
 }
+
+document.getElementById("btn-volver").addEventListener("click", () => {
+  const params = new URLSearchParams(window.location.search);
+  const from = params.get("from");
+
+  if (from === "peliculas") {
+    window.location.href = "peliculas.html";
+  } else if (from === "series") {
+    window.location.href = "series.html";
+  } else {
+    window.location.href = "../index.html"; // fallback por defecto
+  }
+});
 
 window.addEventListener("DOMContentLoaded", () => {
   fetchDetails();

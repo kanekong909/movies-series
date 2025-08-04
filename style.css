@@ -35,13 +35,56 @@ body {
 }
 
 /* Cabecera */
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* estilo bonito */
+    color: white;
+    /* border-radius: 12px; */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+.nav-links a {
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #ffcc00; /* color del "efecto" */
+    transition: width 0.3s ease;
+}
+.nav-links a:hover::before {
+    width: 100%;
+}
+.nav-links a:hover {
+    color: #ffcc00; /* mismo color que la línea o el que quieras */
+}
 .titulo {
     width: 100%;
     padding: var(--padding-general);
 }
-.titulo h1 {
+.navbar h1 {
     text-align: center;
-    font-size: 17px;
+    font-size: 1.5rem;
     font-family: var(--playwrite);
     font-weight: lighter;
 }
@@ -64,6 +107,36 @@ body {
 }
 .buscador input::placeholder {
   color: #252627;
+}
+
+.back-trending {
+    margin-top: 8px;
+    padding: 5px 0;
+    position: relative;
+    width: 100%;
+    height: 200px; /* puedes ajustar según tu imagen */
+    overflow: hidden;
+    /* border-radius: 12px; */
+}
+.back-trending img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* mantiene bien la imagen */
+    filter: brightness(0.2); /* oscurece para que el texto resalte */
+    box-shadow: 0 0 20px rgba(19, 18, 18, 0.365);
+
+}
+.back-trending .trending {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(156, 142, 14);
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    font-family: var(--baskerville);
 }
 
 /* Resultados */
@@ -110,8 +183,8 @@ body {
   text-align: center;
 }
 .movie-card img {
-  width: 100%;
-  border-radius: 10px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 .nombre-pelicula {
     color: rgb(220, 220, 220);
@@ -124,7 +197,20 @@ body {
     font-family: var(--baskerville);
     padding: 0 5px;
 }
-
+.entrega-pelicula {
+  font-size: 10px;
+  font-family: var(--poppins);
+  text-align: start;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+.fecha {
+  font-size: 10px;
+  font-family: var(--poppins);
+  text-align: start;
+  padding: 0 5px; 
+  color: #b2b2b2;
+}
 /* Modal */
 .modal {
   position: fixed;
@@ -225,6 +311,10 @@ body {
 @media (min-width: 768px) {
   #results {
     flex-direction: row;
+  }
+
+  .back-trending .trending {
+    font-size: 4rem;
   }
 }
 

@@ -1,7 +1,7 @@
-const apiKey = "c430c77d8b25dc96309ce5d466d3c372";
-const searchInput = document.getElementById('searchInput');
-const results = document.getElementById('results');
-const hoverModal = document.getElementById('hover-modal');
+const apiKey = "c430c77d8b25dc96309ce5d466d3c372"; // ApiKey
+const searchInput = document.getElementById('searchInput'); // Input de busqueda
+const results = document.getElementById('results'); // Contenedor de resultados buscados
+const hoverModal = document.getElementById('hover-modal'); 
 
 // Modal
 const modal = document.getElementById('popup-modal');
@@ -43,7 +43,6 @@ function renderResults(items) {
     }
   });
 }
-
 
 // Cargar peliculas por defecto
 async function loadDefaultMovies() {
@@ -125,3 +124,5 @@ window.addEventListener('DOMContentLoaded', () => {
   loadDefaultMovies();
   loadRecommendedContent();
 });
+
+

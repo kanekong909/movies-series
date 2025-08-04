@@ -1,0 +1,47 @@
+<!-- pages/peliculas.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Películas | Swiflass</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../css/peliculas.css" />
+</head>
+<body>
+  <!-- Barra de navegacion -->
+  <div class="navbar">
+    <h1 class="logo">Swiflass</h1>
+    <nav class="nav-links">
+        <a href="../index.html">Inicio</a>
+        <a href="templates/peliculas.html">Películas</a>
+        <a href="templates/series.html">Series</a>
+        <a href="templates/actores.html">Actores</a>
+        <a href="templates/directores.html">Directores</a>
+  </div>
+
+  <!-- Peliculas principales -->
+  <main>
+    <h2>Películas principales</h2>
+    <!-- Aquí cargas dinámicamente las películas -->
+    <div id="peliculas-container"></div>
+
+    <h2>Categorías</h2>
+    <div id="categorias-container"></div>
+  </main>
+
+  <!-- Modal -->
+  <div id="popup-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <img id="modal-img" src="" alt="Backdrop" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-type-rating"></p>
+      <p id="modal-overview" class="sinopsis"></p>
+      <button id="modal-more-info-btn">Ver más detalles</button>
+    </div>
+  </div>
+
+  <script src="../js/peliculas.js"></script>
+</body>
+</html>
