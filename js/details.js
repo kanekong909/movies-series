@@ -18,7 +18,42 @@ if (!id) {
 async function fetchDetails() {
   const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&language=es-ES`);
   const data = await res.json();
-  renderDetails(data);
+
+  if (type === "person") {
+    renderPersonDetails(data);
+  } else {
+    renderDetails(data);
+  }
+}
+// Dirctores
+function renderPersonDetails(data) {
+  document.getElementById("titulo").textContent = data.name.toUpperCase();
+  document.getElementById("poster").src = `https://image.tmdb.org/t/p/w500${data.profile_path}`;
+  document.getElementById("poster").alt = data.name;
+  document.getElementById("sinopsis").textContent = data.biography || "Sin biografía disponible";
+  document.getElementById("categorias").innerHTML = `<span class="chip"><p class="categoria">${data.known_for_department}</p></span>`;
+  
+  // Cargar filmografía
+  fetchFilmografiaActor(data.id);
+}
+
+async function fetchFilmografiaActor(personId) {
+  try {
+    const res = await fetch(`https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${apiKey}&language=es-ES`);
+    const datos = await res.json();
+
+    // Filtrar películas y series donde actúa
+    const actuaciones = datos.cast
+      .filter(c => c.media_type === "movie" || c.media_type === "tv")
+      .slice(0, 6); // Limitar a 6 resultados
+
+    document.getElementById("actores").innerHTML = `
+      <h3 class="reparto">Películas y Series</h3>
+      ${actuaciones.map(p => `<span class="chip">${p.title || p.name}</span>`).join("")}
+    `;
+  } catch (error) {
+    console.error("Error al cargar filmografía:", error);
+  }
 }
 
 async function renderDetails(data) {
@@ -97,6 +132,10 @@ document.getElementById("btn-volver").addEventListener("click", () => {
     window.location.href = "peliculas.html";
   } else if (from === "series") {
     window.location.href = "series.html";
+  } else if (from === 'directores') {
+    window.location.href = 'directores.html'
+  } else if (from === 'actores') {
+    window.location.href = 'actores.html'
   } else {
     window.location.href = "../index.html"; // fallback por defecto
   }
@@ -104,6 +143,8 @@ document.getElementById("btn-volver").addEventListener("click", () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   fetchDetails();
-  fetchTrailer();
-  fetchSimilarContent();
+  if (type !== "person") {
+    fetchTrailer();
+    fetchSimilarContent();
+  }
 });

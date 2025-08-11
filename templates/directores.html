@@ -1,0 +1,46 @@
+<!-- pages/directores.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Directores | Swiflass</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../css/directores.css" />
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <div class="navbar">
+    <h1 class="logo">Swiflass</h1>
+    <nav class="nav-links">
+      <a href="../index.html">Inicio</a>
+      <a href="./peliculas.html">Películas</a>
+      <a href="./series.html">Series</a>
+      <a href="./actores.html">Actores</a>
+      <a href="#">Directores</a> <!-- Activo aquí -->
+    </nav>
+  </div>
+
+  <!-- Directores principales -->
+  <main>
+    <h2>Directores principales</h2>
+    <!-- Aquí cargas dinámicamente los directores -->
+    <div id="directores-container"></div>
+
+  </main>
+
+  <!-- Modal -->
+  <div id="popup-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <img id="modal-img" src="" alt="Foto del director" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-type-rating"></p>
+      <p id="modal-overview" class="sinopsis"></p>
+      <button id="modal-more-info-btn">Ver más detalles</button>
+    </div>
+  </div>
+
+  <script src="../js/directores.js"></script>
+</body>
+</html>
